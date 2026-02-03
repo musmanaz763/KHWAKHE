@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My KHWAKHE ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #fce7f3; margin: 0; overflow: hidden; font-family: sans-serif; }
+        .card { background: white; padding: 2rem; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 320px; border: 4px border-pink-100; }
+        #no-btn { transition: all 0.15s ease; z-index: 999; }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+
+    <div id="main-card" class="card">
+        <img id="display-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3N0dzZxNjNpNGJhN3praHUwZXcyYXB0NXVoNDM3MHQ4ZWR0dDhzMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3KYGq82Lb74TbVXLVc/giphy.gif" 
+             alt="Cute Cat" class="mx-auto mb-4 w-40 h-40 object-contain">
+        
+        <h1 id="question" class="text-2xl font-bold text-gray-800 mb-6">Will you be my KHWAKHE? ❤️</h1>
+        
+        <div class="flex justify-center gap-4">
+            <button id="yes-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-8 rounded-full shadow-lg">
+                Yes
+            </button>
+            <button id="no-btn" class="bg-gray-200 text-gray-700 font-bold py-2 px-8 rounded-full shadow-lg">
+                No
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const displayGif = document.getElementById('display-gif');
+        const question = document.getElementById('question');
+
+        // Move the button on hover (Desktop)
+        noBtn.addEventListener('mouseover', moveButton);
+        // Move the button on touch (Mobile)
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        yesBtn.addEventListener('click', () => {
+            question.innerHTML = "YAY! See you then! 🥰";
+            displayGif.src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjF1bWZzbDVlcGEwazh6ZG9oaDJpYXY4Ym00Nzd0b3V2dXUzbzI3aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ut0KxC3gnIwcEpmTZW/giphy.gif";
+            noBtn.style.display = 'none';
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        });
+    </script>
+</body>
+</html>
